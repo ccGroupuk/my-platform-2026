@@ -10,7 +10,10 @@ USER root
 # Install any extra packages if needed, e.g. for MCP
 # RUN apk add --no-cache curl
 
+# Reset entrypoint to avoid conflicts and verify shell availability
+ENTRYPOINT []
+
 USER node
 
-# Start n8n, mapping Railway's PORT to N8N_PORT
-CMD ["sh", "-c", "export N8N_PORT=$PORT && n8n start"]
+# Start n8n using explicit /bin/sh to map the port
+CMD ["/bin/sh", "-c", "export N8N_PORT=$PORT && n8n start"]
