@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import './App.css'
+// import './App.css'
 
 function App() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState('')
 
-  // TODO: Replace with actual n8n Webhook URL once workflow is created
-  const WEBHOOK_URL = import.meta.env.VITE_N8N_WEBHOOK_URL || 'https://replace-me/webhook/form-submit'
+  const WEBHOOK_URL = import.meta.env.VITE_N8N_WEBHOOK_URL || 'https://cccgroup.app.n8n.cloud/webhook/82314639-b60f-4750-bda6-7e87ae472be5'
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
