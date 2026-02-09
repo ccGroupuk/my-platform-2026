@@ -3,7 +3,7 @@ FROM n8nio/n8n:latest
 
 USER root
 # Install curl for internal diagnostics
-RUN if [ -x "$(command -v apk)" ]; then apk add --no-cache curl; else apt-get update && apt-get install -y curl; fi
+RUN apk add --no-cache curl || (apt-get update && apt-get install -y curl)
 RUN mkdir -p /home/node/.n8n && chown -R node:node /home/node/.n8n
 
 # Persistence - PostgreSQL
