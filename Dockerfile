@@ -21,6 +21,6 @@ ENV WEBHOOK_URL=https://my-platform-2026-production.up.railway.app
 # N8N_EDITOR_BASE_URL must be removed
 ENV N8N_HOST=0.0.0.0
 ENV N8N_PORT=8080
-# ENV N8N_TRUST_PROXY=true
+ENV N8N_TRUST_PROXY=true
 
 USER node
