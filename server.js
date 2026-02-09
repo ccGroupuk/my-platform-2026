@@ -10,7 +10,9 @@ app.use(cors());
 app.use(express.json());
 
 // Gemini Setup
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || "YOUR_API_KEY");
+// Sanitize API Key (remove accidental spaces)
+const apiKey = (process.env.GOOGLE_API_KEY || "").replace(/\s/g, "");
+const genAI = new GoogleGenerativeAI(apiKey);
 const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
 // Health Check
