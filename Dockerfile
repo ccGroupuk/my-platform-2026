@@ -3,7 +3,7 @@ FROM n8nio/n8n:latest
 
 USER root
 # Install curl for internal diagnostics
-RUN apk add --no-cache curl || (apt-get update && apt-get install -y curl)
+# Install curl removed to fix build on minimal image
 RUN mkdir -p /home/node/.n8n && chown -R node:node /home/node/.n8n
 
 # Persistence - PostgreSQL
@@ -17,11 +17,11 @@ ENV N8N_ENCRYPTION_KEY=architect-stability-2026
 
 # Routing & Proxy
 # Routing & Proxy
-ENV WEBHOOK_URL=https://my-platform-2026-production.up.railway.app/
+ENV WEBHOOK_URL=https://my-platform-2026-production.up.railway.app
 # N8N_EDITOR_BASE_URL must be removed
 ENV N8N_HOST=0.0.0.0
 ENV N8N_PORT=5678
-# ENV N8N_SKIP_WEBHOOK_DEREGISTRATION_ON_SHUTDOWN=true
+ENV N8N_SKIP_WEBHOOK_DEREGISTRATION_ON_SHUTDOWN=true
 # ENV N8N_TRUST_PROXY=true
 
 USER node
