@@ -16,12 +16,11 @@ ENV DB_POSTGRESDB_PASSWORD=hzjLiwPxNeEnLXdwuCMTpcPZdQIOMCPQ
 ENV N8N_ENCRYPTION_KEY=architect-stability-2026
 
 # Routing & Proxy
-ENV N8N_WEBHOOK_URL=https://my-platform-2026-production.up.railway.app/
+# Routing & Proxy
 ENV WEBHOOK_URL=https://my-platform-2026-production.up.railway.app/
-# ENV N8N_EDITOR_BASE_URL=https://my-platform-2026-production.up.railway.app/
-ENV N8N_HOST=0.0.0.0
-ENV N8N_SKIP_WEBHOOK_DEREGISTRATION_ON_SHUTDOWN=true
-ENV N8N_TRUST_PROXY=true
-ENV N8N_CORS_ALLOWED_ORIGINS=*
+# N8N_EDITOR_BASE_URL must be removed
+# ENV N8N_HOST=0.0.0.0
+# ENV N8N_SKIP_WEBHOOK_DEREGISTRATION_ON_SHUTDOWN=true
+# ENV N8N_TRUST_PROXY=true
 
 USER node
