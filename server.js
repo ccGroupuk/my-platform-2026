@@ -61,6 +61,30 @@ app.post('/webhook/architect-v4', async (req, res) => {
     }
 });
 
+// Debug Endpoint: List Available Models
+app.get('/debug', async (req, res) => {
+    try {
+        // Use the same key to test access
+        const genAI = new GoogleGenerativeAI(apiKey);
+        // Note: genAI.listModels() isn't directly exposed in all versions, 
+        // we might access it via the API directly if SDK fails, 
+        // but let's try a simple generation test on a known older model 'embedding-001' or just return config.
+
+        // Actually, let's just use the basic fetch to the API to list models to be sure
+        const fetch = require('node-fetch'); // Need to ensure node-fetch is available? Native fetch in Node 18!
+
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
+        const data = await response.json();
+
+        res.json({
+            key_preview: apiKey ? apiKey.substring(0, 5) + "..." : "MISSING",
+            api_response: data
+        });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
 app.listen(port, '0.0.0.0', () => {
     console.log(`🚀 Server running on port ${port}`);
 });
